@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | Vikram Gill</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin-body">
+  <div class="admin-shell">
+    <aside class="admin-sidebar">
+      <div>
+        <p class="admin-kicker">Vikram Gill</p>
+        <h1 class="admin-brand">Lead Engine</h1>
+      </div>
+
+      <nav class="admin-nav">
+        <a href="#dashboard">Dashboard</a>
+        <a href="#leads">Leads</a>
+        <a href="#settings">Settings</a>
+      </nav>
+
+      <button id="admin-logout" class="admin-button admin-button-secondary" type="button">Logout</button>
+    </aside>
+
+    <main class="admin-main">
+      <section id="dashboard" class="admin-section">
+        <div class="admin-topbar">
+          <div>
+            <p class="admin-kicker">Overview</p>
+            <h2>Lead Dashboard</h2>
+          </div>
+          <div class="admin-topbar-actions">
+            <button id="refresh-leads" class="admin-button admin-button-secondary" type="button">Refresh</button>
+            <button id="export-csv" class="admin-button admin-button-primary" type="button">Export to CSV</button>
+          </div>
+        </div>
+
+        <div class="admin-metrics">
+          <article class="admin-metric-card">
+            <span>Total Leads</span>
+            <strong id="metric-total">0</strong>
+          </article>
+          <article class="admin-metric-card">
+            <span>Today's Leads</span>
+            <strong id="metric-today">0</strong>
+          </article>
+          <article class="admin-metric-card">
+            <span>Hot Leads</span>
+            <strong id="metric-hot">0</strong>
+          </article>
+          <article class="admin-metric-card">
+            <span>Auto Insurance</span>
+            <strong id="metric-auto">0</strong>
+          </article>
+          <article class="admin-metric-card">
+            <span>Home Insurance</span>
+            <strong id="metric-home">0</strong>
+          </article>
+          <article class="admin-metric-card">
+            <span>Commercial Insurance</span>
+            <strong id="metric-commercial">0</strong>
+          </article>
+          <article class="admin-metric-card">
+            <span>Mortgage</span>
+            <strong id="metric-mortgage">0</strong>
+          </article>
+        </div>
+      </section>
+
+      <section id="leads" class="admin-section">
+        <div class="admin-panel">
+          <div class="admin-panel-header">
+            <div>
+              <p class="admin-kicker">Lead Management</p>
+              <h2>All Leads</h2>
+            </div>
+            <p id="admin-data-status" class="admin-status" aria-live="polite"></p>
+          </div>
+
+          <div class="admin-filters">
+            <input id="lead-search" type="search" placeholder="Search by name, phone, service">
+
+            <select id="service-filter">
+              <option value="">All Services</option>
+              <option value="Auto Insurance">Auto Insurance</option>
+              <option value="Home Insurance">Home Insurance</option>
+              <option value="Commercial Insurance">Commercial Insurance</option>
+              <option value="Mortgage">Mortgage</option>
+            </select>
+
+            <select id="urgency-filter">
+              <option value="">All Urgency</option>
+              <option value="ASAP">ASAP first</option>
+              <option value="1 week">1 week</option>
+              <option value="1 month">1 month</option>
+              <option value="Just exploring">Exploring</option>
+            </select>
+
+            <select id="status-filter">
+              <option value="">All Status</option>
+              <option value="New">New</option>
+              <option value="Contacted">Contacted</option>
+              <option value="Converted">Converted</option>
+              <option value="Lost">Lost</option>
+            </select>
+          </div>
+
+          <div class="admin-table-wrap">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Date/Time</th>
+                  <th>Name</th>
+                  <th>Phone</th>
+                  <th>Email</th>
+                  <th>Service Type</th>
+                  <th>Subtype</th>
+                  <th>Timeline</th>
+                  <th>Preferred Call Time</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="leads-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section id="settings" class="admin-section">
+        <div class="admin-panel">
+          <div class="admin-panel-header">
+            <div>
+              <p class="admin-kicker">Settings</p>
+              <h2>Admin Settings</h2>
+            </div>
+          </div>
+
+          <div class="admin-settings-grid">
+            <article class="admin-setting-card">
+              <h3>Authentication</h3>
+              <p>Basic credentials are currently hardcoded in <code>admin.js</code>. Change them before production use.</p>
+            </article>
+            <article class="admin-setting-card">
+              <h3>Lead API</h3>
+              <p>Connect the dashboard to your deployed Google Apps Script web app to sync leads, status updates, and deletes.</p>
+            </article>
+            <article class="admin-setting-card">
+              <h3>Realtime Refresh</h3>
+              <p>The dashboard refreshes automatically on an interval and also reacts to local browser storage changes.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="lead-modal" class="lead-modal">
+    <div class="lead-modal-card">
+      <div class="lead-modal-header">
+        <h3>Lead Details</h3>
+        <button id="close-modal" class="admin-button admin-button-secondary" type="button">Close</button>
+      </div>
+      <div id="lead-modal-body" class="lead-modal-body"></div>
+    </div>
+  </dialog>
+
+  <script src="admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login | Vikram Gill</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin-body admin-login-body">
+  <main class="admin-login-shell">
+    <section class="admin-login-card">
+      <p class="admin-kicker">Admin Access</p>
+      <h1>Lead Dashboard Login</h1>
+      <p class="admin-subcopy">Use your admin credentials to access leads, filters, export tools, and status management.</p>
+
+      <form id="admin-login-form" class="admin-login-form">
+        <label for="admin-username">Username</label>
+        <input id="admin-username" name="username" type="text" autocomplete="username" required>
+
+        <label for="admin-password">Password</label>
+        <input id="admin-password" name="password" type="password" autocomplete="current-password" required>
+
+        <button class="admin-button admin-button-primary" type="submit">Sign In</button>
+        <p id="admin-login-status" class="admin-status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <script src="admin.js"></script>
+</body>
+</html>
